@@ -1,0 +1,6 @@
+Name : Amit Kumar
+Age : 22
+Skills : c,c++,java,python,html,css,js,react
+
+Qualification : Btech from St. Thomas' College of Engineering & Technology
+Hobbies : Badminton, Coding, Calligraphy etc

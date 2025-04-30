@@ -2,507 +2,241 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Amit's professional portfolio showcasing skills, projects, and contact details.">
-    <title>Amit's Portfolio 👋</title>
-    <style>
-        /* Reset and Base Styles */
-        body,
-        h1,
-        h2,
-        h3,
-        p,
-        ul,
-        li,
-        a,
-        input,
-        textarea,
-        button {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        body {
-            line-height: 1.6;
-            background: linear-gradient(to bottom, #f8fcff, #eaf6ff);
-            color: #333;
-            overflow-x: hidden;
-        }
-
-        img {
-            max-width: 100%;
-            display: block;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* Utility Classes */
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .text-center {
-            text-align: center;
-            padding-bottom: 25px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 25px;
-            /* background: linear-gradient(to right, #007bff, #00c6ff); */
-            background: linear-gradient(to right, #00246B, #84b1fd);
-            color: #fff;
-            border-radius: 30px;
-            transition: background 0.3s, transform 0.3s;
-        }
-
-        .btn:hover {
-            background: linear-gradient(to right, #001744, #356ccc);
-            transform: translateY(-3px);
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateX(-100%);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes navHighlight {
-            from {
-                background-color: transparent;
-            }
-
-            to {
-                background-color: #092d7570
-            }
-        }
-
-        .fade-in {
-            animation: fadeIn 1s ease-in forwards;
-        }
-
-        .slide-in {
-            animation: slideIn 1s ease-in forwards;
-        }
-
-        /* Header */
-        header {
-            /* background: linear-gradient(to right, #007bff, #00c6ff); */
-            background: linear-gradient(to right, #001a4d, #5d8cdd);
-
-            color: #fff;
-            padding: 20px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        header .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        header .nav ul {
-            list-style: none;
-            display: flex;
-        }
-
-        header .nav ul li {
-            margin-left: 25px;
-        }
-
-        header .nav ul li a {
-            position: relative;
-        }
-
-        header .nav ul li a::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -5px;
-            width: 100%;
-            height: 4px;
-            background: #00246B;
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.3s;
-        }
-
-        header .nav ul li a:hover::after {
-            transform: scaleX(1);
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 100px 0;
-            background: url('https://via.placeholder.com/1500x800') no-repeat center/cover;
-            /* background: url(a_logo.jpg) no-repeat center/cover; */
-            color: #00246B;
-            text-align: center;
-            background-blend-mode: overlay;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            animation: fadeIn 1.2s ease-in;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .hero p {
-            margin: 20px 0;
-            font-size: 1.4rem;
-            animation: fadeIn 1.5s ease-in;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
-        }
-
-        /* Sections */
-        section {
-            padding: 100px 0;
-        }
-
-        .about,
-        .contact {
-            background: #fff;
-        }
-
-        .projects,
-        .skills {
-            background: #f4faff;
-        }
-
-        /* About Section */
-        .about {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        .about img {
-            border-radius: 50%;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin-bottom: 30px;
-        }
-
-        /* Projects Section */
-        .projects .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 50px;
-        }
-
-        .projects .card {
-            background: #fff;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .projects .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        }
-
-        .projects .card img {
-            width: 100%;
-        }
-
-        .projects .card .content {
-            padding: 20px;
-            text-align: center;
-        }
-
-        /* Skills Section */
-        .skills .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-            gap: 30px;
-            text-align: center;
-        }
-
-        .skills .skill {
-            background: linear-gradient(to bottom, #fff, #f0f4f8);
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-            position: relative;
-            overflow: hidden;
-            animation: fadeIn 0.8s ease-in;
-        }
-
-        .skills .skill:hover {
-            transform: translateY(-5px);
-            color: #fff;
-        }
-
-        .skills .skill::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to right, #002061, #5481cf);
-            /* background: rgba(0, 123, 255, 0.2); */
-            z-index: 1;
-            transform: scale(0);
-            transition: transform 0.3s;
-            border-radius: 10px;
-        }
-
-        .skills .skill:hover::before {
-            transform: scale(1);
-        }
-
-        .skills .skill span {
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Contact Section */
-        .contact form {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .contact form input,
-        .contact form textarea {
-            width: 100%;
-            padding: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            transition: border-color 0.3s;
-        }
-
-        .contact form input:focus,
-        .contact form textarea:focus {
-            border-color: #007bff;
-        }
-
-        .contact form button {
-            padding: 15px;
-            /* background: linear-gradient(to right, #007bff, #00c6ff); */
-            background: linear-gradient(to right, #00246B, #84b1fd);
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s, transform 0.3s;
-        }
-
-        .contact form button:hover {
-            /* background: linear-gradient(to right, #0056b3, #0084ff); */
-            background: linear-gradient(to right, #001744, #356ccc);
-            transform: translateY(-3px);
-        }
-
-        /* Footer */
-        /* footer {
-            background: #333;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        } */
-
-        /* background toggle button */
-        .toggle-btn {
-            background: transparent;
-            /* border: 2px solid rgb(39, 39, 39); */
-            border-radius: 50%;
-            border: none;
-            padding: 5px;
-            font-size: 1.5rem;
-            cursor: pointer;
-            position: absolute;
-            right: 15px;
-            /* Adjust to align with your nav layout */
-            top: 20px;
-            /* Adjust to align with your nav layout */
-            color: rgba(0, 0, 0, 0.7);
-            /* Default icon color */
-            transition: all 0.3s ease;
-        }
-
-        .toggle-btn:hover {
-            background-color: #333;
-            transform: scale(1.1);
-        }
-
-        /*.dark-mode .toggle-btn {
-            border-color: rgba(255, 255, 255, 0.7);
-            color: rgba(255, 255, 255, 0.9);
-        } */
-
-        .dark-mode .hero,
-        .dark-mode .projects,
-        .dark-mode .card,
-        .dark-mode .contact {
-            background-color: #1a1a1a;
-            color: #fff;
-        }
-
-        /* .dark-mode .skill{
-            background-color: #1a1a1a;
-        } */
-        .dark-mode .about,
-        .dark-mode .skills {
-            background-color: #3f3f3f;
-            color: #fff;
-        }
-
-        .dark-mode header {
-            background-color: red;
-            /* background-color: linear-gradient(to right, #0d1a2d, #294b73); */
-        }
-    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amit's Portfolio 🙋‍♂️</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <!-- Header -->
     <header>
-        <div class="container nav">
-            <h1>Amit's Portfolio</h1>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <button id="dark-mode-toggle" class="toggle-btn">
-                    <span id="toggle-icon">🌙</span>
-                </button>
-            </ul>
-        </div>
+        <nav>
+            <div class="logo">Amit's Portfolio</div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </nav>
     </header>
 
     <!-- Hero Section -->
-    <div class="hero">
-        <h1>Hi, I'm Amit</h1>
-        <p>B.Tech student | DSA Enthusiast | Web Developer | Tech Athlete</p>
-        <a href="#contact" class="btn">Get in Touch</a>
-    </div>
-
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <img src="a_logo.jpg" alt="Amit" height="200px">
-            <h2>About Me</h2>
-            <p>I am a B.Tech student with a passion for software development and solving problems through technology.
-                Experienced in web development and problem solving. Always trying to explore technology</p>
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-text"> <h1>Hi, I'm <span>Amit Kumar<span class="waving-hand">👋</span> </span></h1> </div>
+            <p class="hero-subtext">
+                A passionate web developer creating beautiful, functional websites and
+                applications. I specialize in front-end development and love exploring
+                through code.
+            </p>
+            <div class="hero-btns">
+                <a href="#projects" class="btn">See My Work</a>
+                <a href="#contact" class="btn btn-outline">Contact Me</a>
+            </div>
         </div>
     </section>
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2 class="text-center">Projects</h2>
-            <div class="grid">
-                <div class="card">
-                    <img src="a_logo.jpg" alt="Amit" height="200px">
-                    <div class="content">
-                        <h3>Expense Tracker</h3>
-                        <p>An e-commerce web application with user authentication and dynamic product pages.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="a_logo.jpg" alt="Amit" height="200px">
-                    <div class="content">
-                        <h3>Weather App</h3>
-                        <p>A weather forecasting app that fetches real-time data using an API.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="a_logo.jpg" alt="Amit" height="200px">
-                    <div class="content">
-                        <h3>Todo List</h3>
-                        <p>A place to add, view and delete tasks using local storage.</p>
-                    </div>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="section-title">
+            <h2>About Me</h2>
+        </div>
+        <div class="about-content">
+            <div class="about-img">
+                <img src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                    alt="Developer working" />
+            </div>
+            <div class="about-text">
+                <h3>Web Developer & Tech Enthusiast</h3>
+                <p>
+                    I'm a self-taught developer and problem solver, building web
+                    applications. My journey began when I first introduced to coding at
+                    starting of my college.
+                </p>
+                <p>
+                    I believe in writing clean, efficient code and creating good user
+                    experiences. When I'm not coding, you can find me playing, spending
+                    time with friends and family, learning something new that excites
+                    me.
+                </p>
+                <div class="skills">
+                    <span class="skill">C++</span>
+                    <span class="skill">Java</span>
+                    <span class="skill">HTML</span>
+                    <span class="skill">CSS</span>
+                    <span class="skill">JavaScript</span>
+                    <span class="skill">Operating Systems</span>
+                    <span class="skill">Object Oriented Programming</span>
+                    <span class="skill">Node.js</span>
+                    <span class="skill">MongoDB</span>
+                    <span class="skill">Git</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <div class="container">
-            <h2 class="text-center">Skills</h2>
-            <div class="grid">
-                <div class="skill"><span>C++</span></div>
-                <div class="skill"><span>HTML & CSS</span></div>
-                <div class="skill"><span>JavaScript</span></div>
-                <div class="skill"><span>Python</span></div>
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="section-title">
+            <h2>My Projects</h2>
+        </div>
+
+        <div class="projects-grid">
+            <!-- Project 1 -->
+            <div class="project-card" data-category="web">
+                <div class="project-img">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                        alt="Expense Tracker Web App" />
+                </div>
+                <div class="project-info">
+                    <h3>Expense Tracker</h3>
+                    <p>
+                        A proper web application with product listings, cart
+                        functionality, and secure checkout.
+                    </p>
+                    <div class="project-links">
+                        <a href="https://amitkr321.github.io/Expense_Tracker/" class="project-link"><i
+                                class="fas fa-external-link-alt"></i> Live Demo</a>
+                        <a href="https://github.com/amitkr321/Expense_Tracker" class="project-link"><i
+                                class="fab fa-github"></i> View Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card" data-category="mobile">
+                <div class="project-img">
+                    <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                        alt="Weather App" />
+                </div>
+                <div class="project-info">
+                    <h3>Weather App</h3>
+                    <p>
+                        Web application for tracking Weather of a city that you need to know.
+                    </p>
+                    <div class="project-links">
+                        <a href="https://amitkr321.github.io/Weather_App/" class="project-link"><i
+                                class="fas fa-external-link-alt"></i>Live Demo</a>
+                        <a href="https://github.com/amitkr321/Weather_App" class="project-link"><i
+                                class="fab fa-github"></i> View Code</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card" data-category="web">
+                <div class="project-img">
+                    <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1636&q=80"
+                        alt="Task Manager" />
+                </div>
+                <div class="project-info">
+                    <h3>Task Management Tool</h3>
+                    <p>
+                        Task management application with real-time updates
+                        and local storage features.
+                    </p>
+                    <div class="project-links">
+                        <a href="https://amitkr321.github.io/To-Do-List/" class="project-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        <a href="https://github.com/amitkr321/To-Do-List" class="project-link">
+                            <i class="fab fa-github"></i> View Code</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="text-center">Contact Me</h2>
-            <form>
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <textarea placeholder="Your Message" rows="5" required></textarea>
-                <button type="submit">Send Message</button>
-            </form>
+    <section id="contact">
+        <div class="section-title">
+            <h2>Get In Touch</h2>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h3>Location</h3>
+                        <p>Kolkata, West Bengal</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h3>Email</h3>
+                        <a href="mailto:jbamit24@gmail.com">jbamit24@gmail.com</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h3>Phone</h3>
+                        <a href="tel:+918910989259">(+91) 8910989259</a>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" class="form-control" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" class="form-control" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" class="form-control" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                    <div id="statusMessage"></div>
+                </form>
+            </div>
         </div>
     </section>
 
-    <!-- Footer
+    <!-- previous code for contact form -->
+    <!-- <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="text-center">Contact Me</h2>
+            <form id="contactForm">
+                <input type="text" name="name" placeholder="Your Name" required />
+                <input type="email" name="email" placeholder="Your Email" required />
+                <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                <button type="submit" id="submitBtn">Send Message</button>
+            </form>
+            <div id="statusMessage"></div>
+        </div>
+    </section> -->
+
+
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2025 Amit's Portfolio. All Rights Reserved.</p>
-    </footer> -->
+        <div class="social-links">
+            <a href="https://github.com/amitkr321" class="social-link"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/amit-kumar-8a0a93266/" class="social-link"><i
+                    class="fab fa-linkedin-in"></i></a>
+        </div>
+        <p>© Amit Kumar. All rights reserved.</p>
+        <p>Made with ❤️</p>
+    </footer>
+    <script src="script.js"></script>
 
-    <script>
-        const themeToggleBtn = document.getElementById('dark-mode-toggle');
-        const toggleIcon = document.getElementById('toggle-icon');
-
-        // Add a single event listener for toggling
-        themeToggleBtn.addEventListener('click', () => {
-            // Toggle dark mode class on the body
-            document.body.classList.toggle('dark-mode');
-
-            // Update the icon dynamically
-            if (document.body.classList.contains('dark-mode')) {
-                toggleIcon.textContent = '☀️'; // Sun icon for light mode
-            } else {
-                toggleIcon.textContent = '🌙'; // Moon icon for dark mode
-            }
-        });
-    </script>
 </body>
 
 </html>
